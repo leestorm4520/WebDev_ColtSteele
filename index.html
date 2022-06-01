@@ -59,6 +59,7 @@
     <!-- Form: where the data is sent -->
     <h2>Form action</h2>
     <form action="/tacos">
+        <button type="button">PLEASE DO NOT SUBMIT THE BUTTON</button>
         <p><input type="text" placeholder="Name"></p>
         <h4>Nationality</h4>
         <p><input type="checkbox">Vietnam</p>
@@ -69,8 +70,14 @@
             <option>Male</option>
             <option>Female</option>
         </select>
-        <p><input type="submit" name="" value="Send"></p>
+        <h4>Color</h4>
+        <p><input type="color"></p>
+        <button>Submit</button>
+    </form>
 
+    <form action="https://www.reddit.com/search/?q=chicken">
+        <input name="q" type="text">
+        <button>Submit</button>
     </form>
     <!-- Multimedia -->
     <audio controls>
