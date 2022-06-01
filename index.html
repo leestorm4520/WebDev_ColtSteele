@@ -72,9 +72,18 @@
         </select>
         <h4>Color</h4>
         <p><input type="color"></p>
-        <button>Submit</button>
-    </form>
+        <p>
+            <label for="age">Age</label>
+            <input type="range" id="age" min="10" max="80" name="age">
+        </p>
+        <p>
+            <label for="comment">Comment</label>
+            <textarea id="comment" name="comment" rows="5" cols="20"></textarea>
+        </p>
+            <button>Submit</button>
 
+    </form>
+    <h4>Hijacking Search on Reddit</h4>
     <form action="https://www.reddit.com/search/?q=chicken">
         <input name="q" type="text">
         <button>Submit</button>
