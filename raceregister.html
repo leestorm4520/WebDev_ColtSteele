@@ -5,27 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Race Registration</title>
+   
 </head>
 <body>
     <h1>Race Registration!</h1>
-    <div>
+    <form>
         <div>
-            <p>
-                <label for="fname">First Name </label>
-                <input type="text" id="fname" name="fname">
-                <label for="lname">Last Name</label>
-                <input type="text" id="lname" name="lname">
-            </p>
+            <div>
+                <p>
+                    <label for="fname">First Name </label>
+                    <input type="text" id="fname" name="fname">
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lname">
+                </p>
+            </div>
+            <div>
+                <p>Select a Race:</p>
+                <p>
+                    <input type="radio" id="funrun" name="race" value="funrun">
+                    <label for="funrun">Fun Run 5k</label>
+                </p>
+                <p>
+                    <input type="radio" id="half" name="race" value="half">
+                    <label for="half">Half Marathon</label> 
+                </p>
+                <p>
+                    <input type="radio" id="full" name="race" value="full">
+                    <label for="full">Full Marathon</label>
+                </p>
+                <p>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                    <br>
+                    <label for="age">Select Age Group</label>
+                    <select>
+                        <option value="kids">under 18</option>
+                        <option value="youth">18-25</option>
+                        <option value="adults">25-60</option>
+                        <option value="senior">over 60</option>
+
+                    </select>
+                </p>
+            
+            </div>
+            <button>Register</button>
         </div>
-        <div>
-            <p>Select a Race:</p><br><br>
-            <select>
-                <option type="radio">Fun Run 5k</option>
-                <option>Half Marathon</option>
-                <option>Full Marathon</option>
-            </select>
-        </div>
-    </div>
+    </form>
     
 </body>
 </html>
