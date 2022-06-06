@@ -1,6 +1,6 @@
 /* universal */
 *{
-    color:pink;
+    color:black;
     background:white;
 }
 /* selector list*/
@@ -10,4 +10,23 @@ h1,h2{
 /* id selector */
 #comment{
     background:red;
+}
+/* class selector */
+.tag{
+    background:red;
+}
+/* descendant selector */
+/* anchor text <a> nested inside a list <li> */
+li a{ 
+    color:teal;
+}
+/* adjacent selector */
+/* select only paragraphs that come right after h1 */
+h1+p{
+    color:red;
+}
+/* direct child */
+/* select only the <li>'s that are direct children of a <div> element */
+div > li{
+    color:white;
 }
