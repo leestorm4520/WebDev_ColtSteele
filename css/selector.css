@@ -1,0 +1,13 @@
+/* universal */
+*{
+    color:pink;
+    background:white;
+}
+/* selector list*/
+h1,h2{
+    color:blue;
+}
+/* id selector */
+#comment{
+    background:red;
+}
