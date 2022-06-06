@@ -2,3 +2,7 @@
     font-family:"ALEX BRUSH"
     src: url(../fonts/AlexBrush-Regular.ttf) format("truetype");
 }
+p{
+    font-family: Arial;
+    font-weight: 500;
+}
