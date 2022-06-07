@@ -30,3 +30,9 @@ h1+p{
 div > li{
     color:white;
 }
+/* attribute selector */
+/* select all input elements where the type attribute is set to text */
+input[type="text"]{
+    width:300px;
+    color:yellow;
+}
