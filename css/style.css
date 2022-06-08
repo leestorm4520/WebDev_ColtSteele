@@ -1,17 +1,81 @@
-@font-face{
-    font-family:"ALEX BRUSH"
-    src: url(../fonts/AlexBrush-Regular.ttf) format("truetype");
+/* universal */
+*{
+    color:black;
+    background:white;
 }
-p{
-    font-family: Arial;
-    font-weight: 500;
-    font-size: 15px;
-    font-style:italic;
-    line-height:45px;
-    /* text-decoration: line-through; 
-        text-transform: uppercase;
-        letter-spacing: 15px;
-        word-spacing: 10px;
-    
-        ;*/
+/* selector list*/
+h1,h2{
+    color:blue;
 }
+/* id selector */
+#comment{
+    background:red;
+}
+/* class selector */
+.tag{
+    background:red;
+}
+/* descendant selector */
+/* anchor text <a> nested inside a list <li> */
+li a{ 
+    color:teal;
+}
+/* adjacent selector */
+/* select only paragraphs that come right after h1 */
+h1+p{
+    color:red;
+}
+/* direct child */
+/* select only the <li>'s that are direct children of a <div> element */
+div > li{
+    color:white;
+}
+/* attribute selector */
+/* select all input elements where the type attribute is set to text */
+input[type="text"]{
+    width:300px;
+    color:yellow;
+}
+a[href*="home"]{
+    font-size:40px;
+    color:greenyellow;
+}
+
+/* Pseudo class 
+keyword added to a selector that specifies a special state of the selected elements
+active
+checked
+fist
+first-child
+hover
+not()
+nth-child
+nth-of-type()
+*/
+a:hover{
+    color:orange;
+}
+button:hover{
+    background-color: aqua;
+    color:blue;
+    text-decoration: underline wavy;
+}
+
+/* Pseudo-elements
+:: after
+::backdrop
+::first-letter
+::first-line
+::selection
+*/
+h2::first-letter{
+    font-size:20px;
+}
+p::first-line{
+    color:purple;
+}
+/* Specificity: the browser decides which element to show - the more specific the selector, the more chance of its winning
+id > class > element
+
+*/
+
