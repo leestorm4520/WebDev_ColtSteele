@@ -60,3 +60,12 @@ button:hover{
     color:blue;
     text-decoration: underline wavy;
 }
+
+/* Pseudo-elements
+:: after
+::backdrop
+::first-letter
+*/
+h2::first-letter{
+    font-size:20px;
+}
