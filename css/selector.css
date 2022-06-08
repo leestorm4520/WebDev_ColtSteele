@@ -36,3 +36,7 @@ input[type="text"]{
     width:300px;
     color:yellow;
 }
+a[href*="home"]{
+    font-size:40px;
+    color:greenyellow;
+}
