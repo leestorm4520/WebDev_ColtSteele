@@ -40,3 +40,23 @@ a[href*="home"]{
     font-size:40px;
     color:greenyellow;
 }
+
+/* Pseudo class 
+keyword added to a selector that specifies a special state of the selected elements
+active
+checked
+fist
+first-child
+hover
+not()
+nth-child
+nth-of-type()
+*/
+a:hover{
+    color:orange;
+}
+button:hover{
+    background-color: aqua;
+    color:blue;
+    text-decoration: underline wavy;
+}
