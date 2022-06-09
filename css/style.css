@@ -77,9 +77,17 @@ p::first-line{
 /* Specificity: the browser decides which element to show - the more specific the selector, the more chance of its winning
 inline style > id > class > element
 */
-/* !important - win automatically
+/* !important - win automatically - not recommended to use
 .foo[style=""]{
     color:red !important;
 }
  */
 
+ /* Box model - the concept that everything is a box in CSS
+ Border (Border radius)
+ Padding
+ Margin
+ Width & Height
+ Display Property
+ Units - Percentage, EMS & REMS
+ */
