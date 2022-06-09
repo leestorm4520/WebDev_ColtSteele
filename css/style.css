@@ -75,7 +75,11 @@ p::first-line{
     color:purple;
 }
 /* Specificity: the browser decides which element to show - the more specific the selector, the more chance of its winning
-id > class > element
-
+inline style > id > class > element
 */
+/* !important - win automatically
+.foo[style=""]{
+    color:red !important;
+}
+ */
 
