@@ -4,9 +4,9 @@ div{
     border-width: 5px;
     border-color:aqua;
     border-style:dotted;
+    border-radius: 10px;
 }
 
 h1{
-    background-color: blue;
+    color:blue;
 }
-
