@@ -92,3 +92,15 @@ inline style > id > class > element
  Units - Percentage, EMS & REMS
  */
 
+ div{
+    width:200px;
+    height:200px;
+    border-width: 5px;
+    border-color:aqua;
+    border-style:dotted;
+    border-radius: 10px;
+}
+
+button{
+    padding:20px;
+}
