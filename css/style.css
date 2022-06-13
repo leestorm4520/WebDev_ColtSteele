@@ -104,3 +104,15 @@ inline style > id > class > element
 button{
     padding:20px;
 }
+
+/*
+Unit:
+
+Relative:
+    percentages: relate to the margin of the parent) (ex: width: 50%
+    em: relate to the font size of the parent
+    rem: relate to the root font size of html element
+
+Absolute:
+
+*/
