@@ -17,21 +17,46 @@
         #middle{
             background-color: #81b29a;
         }
+        #static #middle{
+            position:static;
+            top:100px;
+        }
+        #relative #middle{
+            position:relative;
+            top:100px;
+            right:50px;
+        }
+        /*
+        absolute
+        fixed
+        sticky
+        */
 
     </style>
 </head>
 <body>
     <h1>Position Property</h1>
-    <h3>Static</h3>
+    <section id="static">
+        <h3>Static</h3>
     <div>
-
     </div>
     <div id="middle">
-
     </div>
     <div>
-
     </div>
+    </section>
+    
+    <section id="relative">
+        <h3>Relative</h3>
+    <div>
+    </div>
+    <div id="middle">
+    </div>
+    <div>
+    </div>
+    </section>
+
+
     
 </body>
 </html>
