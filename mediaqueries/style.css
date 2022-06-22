@@ -1,0 +1,24 @@
+h1{
+    text-align: center;
+    font-size:4em;
+}
+nav{
+    font-size:1.5em;
+}
+
+ul,li{
+    display:inline;
+    margin:0;
+    padding:0;
+}
+
+@media (min-width:600px) and (max-width:800px){
+    h1{
+        color:purple;
+    }
+}
+@media (orientation:landscape){
+    body{
+        color:blue;
+    }
+}
