@@ -19,4 +19,5 @@ slice: copies a portion on an array
 splice: removes/replaces elements
 sort: sorts an array
 */
-store.
+color.splice(1,0,'blue','forestgreen')
+console.log(color)
