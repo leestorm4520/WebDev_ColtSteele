@@ -22,3 +22,4 @@ sort: sorts an array
 color.splice(1,0,'blue','forestgreen')
 console.log(color)
 const person={firstName:'John', lastName:'Jagger'}
+for(let i=0;i<10;i++) console.log(i);
