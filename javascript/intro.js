@@ -23,3 +23,15 @@ color.splice(1,0,'blue','forestgreen')
 console.log(color)
 const person={firstName:'John', lastName:'Jagger'}
 for(let i=0;i<10;i++) console.log(i);
+
+/*
+object
+students=Object.entries(TestScores) 
+scores=Object.values(TestScores);
+for(let score of scores) total+=score;
+console.log(totalscore.length);
+
+
+for(let student in TestScore) console.log(`${student} scored ${testScores[student]}`);
+
+*/
