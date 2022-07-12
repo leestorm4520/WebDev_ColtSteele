@@ -51,7 +51,14 @@ const cat={
     breed: 'scottish fold',
     meow(){
         console.log("MEOW MEOW MEOW");
-        console.log(`${this.name} +${this.color}`);
+        console.log(`${this.name} ${this.color}`);
     }
 }
 cat.meow()
+
+try{
+    hello.toUpperCase();
+}
+catch{
+    console.log("ERROR");
+}
