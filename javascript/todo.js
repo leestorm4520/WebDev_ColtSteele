@@ -10,18 +10,19 @@ while(option!="quit"){
             console.log(add+" added to List");
             break;
         case "list":
-            for(var todo in list) console.log(todo);
+            for(var todo of list) console.log(todo);
             break;
         case "delete":
             var remove=prompt("What todo to remove?");
             const index=list.indexOf(remove);
             if(index>-1){
                 list.splice(index, 1);
-                consolog.log(remove+" removed from List");
+                console.log(remove+" removed from List");
             }
             else console.log(remove+ " not in List");
             break;
         case "quit":
+            console.log("Okay, you quit the app!");
             break;
         default:
     }

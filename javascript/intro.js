@@ -35,3 +35,12 @@ console.log(totalscore.length);
 for(let student in TestScore) console.log(`${student} scored ${testScores[student]}`);
 
 */
+
+/*
+Method vs Function
+
+-Every method is a function
+-not every function is a method
+
+method is function as properties on objects
+*/
