@@ -45,6 +45,8 @@ Method vs Function
 method is function as properties on objects
 */
 
+
+//this
 const cat={
     name: 'Blue Steele',
     color: 'grey',
@@ -56,9 +58,32 @@ const cat={
 }
 cat.meow()
 
+//try and catch
 try{
     hello.toUpperCase();
 }
 catch{
     console.log("ERROR");
 }
+
+//forEach
+const nums=[1,2,4,5,3,5,3,5,3,5];
+nums.forEach(function (el){console.log(el)});
+
+//map
+// const nums=[1,2,3,4,5,6,7,8];
+const double= nums.map(function(num){
+    return nums*2;
+});
+
+//arrow
+const square=(x)=>{return x*x};
+const sum=(x,y)=>{return x*y};
+
+//implicit arrow
+const squareIm=(x)=>(x*x);
+
+console.log(square(2));
+console.log(sum(1,2));
+
+//setTimeout
