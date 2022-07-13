@@ -113,3 +113,18 @@ console.log(exam.some(score=>score<50))
 
 //reduce: take in an array and result in a single value
 [3,5,6,8,5].reduce((accumulator, currentValue)=>{ return accumulator+currentValue});
+
+//default params
+
+//spread - function calls - array literals - objects
+...
+
+//rest params - same as spread for function parameters/arguments
+...
+
+//DOM
+document.getElementById(id);
+document.getElementsByTagName(tag);
+document.getElementsByClassName(class);
+document.querySelector("can be anything - the first thing of id/tag/class");
+document.querySelectorAll("can be anything - all elements");
