@@ -1,5 +1,1 @@
-const square=(x)=>{return x*x};
-const sum=(x,y)=>{return x*y};
-
-console.log(square(2));
-console.log(sum(1,2));
+[3,5,6,8,5].reduce((accumulator, currentValue)=>{ return accumulator+currentValue});

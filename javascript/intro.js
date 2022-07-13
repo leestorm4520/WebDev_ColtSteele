@@ -80,6 +80,11 @@ const double= nums.map(function(num){
 const square=(x)=>{return x*x};
 const sum=(x,y)=>{return x*y};
 
+//keyword this refer to the window object - arrow is not used to define an object
+const person1={first:'John', last:'Le', fullName: function(){ return `${this.first} ${this.last}`}}
+const person1={first:'John', last:'Le', fullName: ()=>{ return `${this.first} ${this.last}`}} //undefined
+
+
 //implicit arrow
 const squareIm=(x)=>(x*x);
 
@@ -87,3 +92,24 @@ console.log(square(2));
 console.log(sum(1,2));
 
 //setTimeout
+console.log("Hello")
+setTimeout(()=>{
+    console.log("...are you still there?")
+}, 3000)
+
+//setInterval
+const id= setInterval(() => {
+    console.log('Hello')
+}, 2000);
+clearInterval(id);
+
+//filter
+nums.filter(n=>{return n>4});
+
+//some (or) and every (and) : return boolean value
+const exam=[45,67,89,59];
+console.log(exam.every(score=> score>=75))
+console.log(exam.some(score=>score<50))
+
+//reduce: take in an array and result in a single value
+[3,5,6,8,5].reduce((accumulator, currentValue)=>{ return accumulator+currentValue});
