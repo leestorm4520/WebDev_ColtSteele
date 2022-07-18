@@ -12,3 +12,5 @@ for (let link of allLinks) {
 }
 
 
+var newImg=document.createElement('img');
+console.log(newImg);
