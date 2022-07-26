@@ -9,3 +9,8 @@ sing()
     .catch((error)=>{
         console.log('promise failed');
     })
+
+    /*
+    Promises - then / catch
+    async - await
+    */
