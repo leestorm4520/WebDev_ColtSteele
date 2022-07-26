@@ -80,6 +80,8 @@ const fakeRequestPromise = (url) => {
 // THE CLEANEST OPTION WITH THEN/CATCH
 // RETURN A PROMISE FROM .THEN() CALLBACK SO WE CAN CHAIN!
 fakeRequestPromise('yelp.com/api/coffee/page1')
+//.then: correspond to "resolved/succeed" state
+//.catch: correspond to "fail" state
     .then((data) => {
         console.log("IT WORKED!!!!!! (page1)")
         console.log(data)
