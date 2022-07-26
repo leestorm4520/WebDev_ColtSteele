@@ -102,15 +102,18 @@ const fakeRequestPromise = (url) => {
 //     })
 
 fakeRequestPromise('yelp.com/api/coffee/page1')
-    .then(()=>{
+    .then((data)=>{
         console.log("It worked for page1")
+        console.log(data)
         return fakeRequestPromise('yelp.com/api/coffee/page1')
     })
-    .then(()=>{
+    .then((data)=>{
         console.log("It worked for page2")
+        console.log(data)
         return fakeRequestPromise('yelp.com/api/coffee/page2')
     })
-    .catch(()=>{
+    .catch((err)=>{
         console.log("Oh no, a request failed")
+        console.log(err)
     })
 
