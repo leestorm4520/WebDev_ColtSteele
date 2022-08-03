@@ -1,20 +1,44 @@
 const express=require('express');
 const app=express();
+const path=require('path');
 
 //built-in middleware to handle json callbacks
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+app.set('views',path.join(__dirname,'views'));
+app.set('view engine','ejs');
 
-app.get('/',(req,res)=>{
-    res.render('getpost.html');
+
+const comments=[
+    {
+        username:'John',
+        comment:'that is boring'
+    },
+    {
+        username:'Tu',
+        comment:'that is not too bad'
+    },
+    {
+        username:'Phan',
+        comment:'Come on ! it is lit'
+    },
+    {
+        username:'Jashun',
+        comment:'What do you mean'
+    }
+];
+app.get('/comments',(req,res)=>{
+    res.render('comments/index',{comments});
 })
 
-app.get('/work',(req,res)=>{
-    res.send('hello get');
+app.get('/comments/new',(req,res)=>{
+    res.render('comments/new');
 })
-app.post('/work',(req,res)=>{
-    console.log(req.body);
-    res.send('hello post')
+
+app.post('/comments',(req,res)=>{
+    const {username,comment}=req.body;
+    comments.push({username,comment});
+    res.send('it works');
 })
 
 app.listen(3000,()=>{
