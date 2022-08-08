@@ -41,6 +41,8 @@ let comments = [
 // **********************************
 // INDEX - renders multiple comments
 // **********************************
+
+
 app.get('/comments', (req, res) => {
     res.render('comments/index', { comments });
 })
