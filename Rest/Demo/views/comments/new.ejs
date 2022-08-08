@@ -9,11 +9,15 @@
 <body>
     <h1>Make a new comment</h1>
     <form action="/comments" method="post">
-        <label for="username">Enter username</label>
-        <input type="text" id="username" name="username">
-        <br>s
-        <label for="comment">Comment</label>
-        <textarea type="text" id="comment" cols="30" rows="5"></textarea>
+        <section>
+            <label for="username">Enter username</label>
+            <input type="text" id="username" name="username">
+        </section>
+       <section>
+        <label for="comment">Comment</label><br>
+        <textarea id="comment" name="comment" cols="30" rows="5"></textarea>
+       </section>
+        
         <button>Submit</button>
     </form>
     <a href="/comments">Back to Index</a>

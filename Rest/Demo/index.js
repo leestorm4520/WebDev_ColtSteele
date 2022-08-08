@@ -48,9 +48,14 @@ app.listen(3000,()=>{
 })
 
 /*
-GET /comments - list all comments
-POST /comments - create a new comment
-GET /comments/:id - get one comment using ID
-PATCH /comments/:id - update one comment
-DELETE /comments/:id - destroy one comment
+Name    Path                Verb    Purpose
+Index   /comments           GET     Display all comments
+New     /comments/new       GET     Form to create new comment
+Create  /comments           POST    Create new comment on server
+Show    /comments/:id       GET     Details for one specific comment
+Edit    /comments/:id/edit  GET     Form to edit specific comment
+Update  /comments/:id       PATCH   Update specfic comment on server
+Destroy /comments/:id       DELETE  Delete specific item on sever
+
+
 */
