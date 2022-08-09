@@ -74,7 +74,7 @@ app.get('/comments/:id', (req, res) => {
 app.get('/comments/:id/edit', (req, res) => {
     const { id } = req.params;
     const comment = comments.find(c => c.id === id);
-    res.render('comments/edit', { comment })
+    if(comment) {res.render('comments/edit', { comment });}
 })
 // *******************************************
 // UPDATE - updates a particular comment

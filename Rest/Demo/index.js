@@ -1,12 +1,19 @@
 const express=require('express');
 const app=express();
 const path=require('path');
+const medthodOverride=require('method-override');
 const {v4: uuid}=require('uuid');
 uuid();
 
 //built-in middleware to handle json callbacks
+
+//to parse form data in POST request body
 app.use(express.urlencoded({extended:true}));
+//to parse incoming JSON in POST request body
 app.use(express.json());
+//to 'fake' put/patch/delete requests
+app.use(medthodOverride('method'));
+//to view folders and EJS setup
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 
@@ -34,28 +41,44 @@ const comments=[
     }
 ];
 
-
+//Display all comments
 app.get('/comments',(req,res)=>{
     res.render('comments/index',{comments});
 })
 
+//Form to create new comment
 app.get('/comments/new',(req,res)=>{
     res.render('comments/new');
 })
 
+//Create new comment on server
 app.post('/comments',(req,res)=>{
     const {username,comment}=req.body; //req.body: user input in web page's body
     comments.push({username,comment, id:uuid()});
     res.redirect('/comments');
 })
 
+//Get details for one specific comment
 app.get('/comments/:id',(req,res)=>{
-    const {id}=req.params; //req.params: data extracted from url
-    const comment=comments.find(c=>c.id===id)
-    res.render('comments/show', {comment})
+    try{
+        const {id}=req.params; //req.params: data extracted from url
+        const comment=comments.find(c=>c.id===id)
+        res.render('comments/show', {comment})
+    }
+    catch(e){
+        console.log(e);
+    }
 
 })
 
+//Form to edit one specific comment
+app.get('/comments/:id/edit',(req,res)=>{
+    const {id}=req.params;
+    const comment=comments.find(c=>c.id===id);
+    res.send('/comments/edit',{comment})
+})
+
+//Edit one specific comment
 app.patch('/comments/:id',(req,res)=>{
     const {id}=req.params;
     const newCommentText=req.body.comment;
