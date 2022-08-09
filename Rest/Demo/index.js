@@ -1,7 +1,7 @@
 const express=require('express');
 const app=express();
 const path=require('path');
-const medthodOverride=require('method-override');
+const methodOverride=require('method-override');
 const {v4: uuid}=require('uuid');
 uuid();
 
@@ -12,13 +12,13 @@ app.use(express.urlencoded({extended:true}));
 //to parse incoming JSON in POST request body
 app.use(express.json());
 //to 'fake' put/patch/delete requests
-app.use(medthodOverride('method'));
+app.use(methodOverride('_method'));
 //to view folders and EJS setup
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','ejs');
 
 
-const comments=[
+let comments=[
     {   
         id:uuid(),
         username:'John',
@@ -41,15 +41,16 @@ const comments=[
     }
 ];
 
+
 //Display all comments
 app.get('/comments',(req,res)=>{
     res.render('comments/index',{comments});
-})
+});
 
 //Form to create new comment
 app.get('/comments/new',(req,res)=>{
     res.render('comments/new');
-})
+});
 
 //Create new comment on server
 app.post('/comments',(req,res)=>{
@@ -75,17 +76,43 @@ app.get('/comments/:id',(req,res)=>{
 app.get('/comments/:id/edit',(req,res)=>{
     const {id}=req.params;
     const comment=comments.find(c=>c.id===id);
-    res.send('/comments/edit',{comment})
+    if(comment) res.render('comments/edit',{comment});
 })
 
 //Edit one specific comment
 app.patch('/comments/:id',(req,res)=>{
+    console.log('hi')
     const {id}=req.params;
-    const newCommentText=req.body.comment;
-    const comment=comments.find(c=>c.id===id);
-    foundComment.comment=newCommentText;
+    const newCommentText=req.body.comment; //get new text from req.body
+    const foundComment=comments.find(c=>c.id===id);
+    console.log(newCommentText+' '+foundComment.comment);
+    foundComment.comment=newCommentText; //update the comment with the data from req.body
     res.redirect('/comments')
 })
+
+
+//Delete one specific comment
+app.delete('/comments/:id',(req,res)=>{
+    const {id}=req.params;
+    // const comment=comments.find(c=>c.id===id);
+    comments= comments.filter(c=>c.id!=id);
+    res.redirect('/comments');
+})
+/*
+//Error handler
+app.use((req,res,next)=>{
+    const err=new Error('Not found');
+    err.status=404;
+    next(err);
+});
+
+app.use((err, req, res, next) => {
+    res.locals.error = err;
+    const status = err.status || 500;
+    res.status(status);
+    res.render('error');
+  });
+  */
 
 app.listen(3000,()=>{
     console.log('listen on port 3000');
