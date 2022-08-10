@@ -45,6 +45,15 @@ const productSchema=new mongoose.Schema({
 productSchema.methods.greet=function(){
     console.log('Hello'+this.name)
 }
+productSchema.methods.toggleOnSale=function(){
+    this.onSale=!this.onSale;
+    return this.save();
+}
+
+productSchedule.methods.addCategory=function(newCat){
+    this.categories.push(newCat);
+
+}
 
 const Product=mongoose.model('Product',productSchema);
 const bike=new Product({name:'Mountain Bike', price:20, categories:['Cycling','Outdoor']});
@@ -60,7 +69,9 @@ const bike=new Product({name:'Mountain Bike', price:20, categories:['Cycling','O
  })
 
  const findProduct=async()=>{
-    const foundProduct=await Product.findOne({name:'Mountain'});
+    const foundProduct=await Product.findOne({name:'Mountain Bike'});
     foundProduct.greet();
+    await foundProduct.toggleOnSale();
+    console.log(foundProduct);
  }
  findProduct();
