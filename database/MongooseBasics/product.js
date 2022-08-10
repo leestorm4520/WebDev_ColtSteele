@@ -40,6 +40,7 @@ const productSchema=new mongoose.Schema({
 });
 const Product=mongoose.model('Product',productSchema);
 const bike=new Product({name:'Mountain Bike', price:599, categories:['Cycling','Outdoor']});
+// if update, have to include {new:true, runValidators:true}
  bike.save()
  .then(data=>{
     console.log('it works');
