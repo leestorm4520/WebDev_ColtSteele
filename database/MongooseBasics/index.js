@@ -16,4 +16,4 @@ const movieSchema=new mongoose.Schema({
 });
 
 const  Movie=mongoose.model('Movie',movieSchema);
-const DOFP= new Movie ({title:'X-Men:Day of Future Past', year:2017,score:9.2,rating:'PG-13'});
+// const DOFP= new Movie ({title:'X-Men:Day of Future Past', year:2017,score:9.2,rating:'PG-13'});
