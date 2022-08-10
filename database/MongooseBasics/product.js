@@ -16,7 +16,8 @@ const productSchema=new mongoose.Schema({
     },
     price:{
         type:Number,
-        required:true
+        required:true,
+        min:[0,'Price must be positive']
     },
     onSale:{
         type:Boolean,
@@ -34,12 +35,19 @@ const productSchema=new mongoose.Schema({
             type:Number,
             default:0,
         },
-
-        }
+        },
+    size:{
+        type:String,
+        enum:['S','M','L']
     }
-});
+    }
+);
+productSchema.methods.greet=function(){
+    console.log('Hello'+this.name)
+}
+
 const Product=mongoose.model('Product',productSchema);
-const bike=new Product({name:'Mountain Bike', price:599, categories:['Cycling','Outdoor']});
+const bike=new Product({name:'Mountain Bike', price:20, categories:['Cycling','Outdoor']});
 // if update, have to include {new:true, runValidators:true}
  bike.save()
  .then(data=>{
@@ -50,3 +58,9 @@ const bike=new Product({name:'Mountain Bike', price:599, categories:['Cycling','
     console.log('oh no');
     console.log(err);
  })
+
+ const findProduct=async()=>{
+    const foundProduct=await Product.findOne({name:'Mountain'});
+    foundProduct.greet();
+ }
+ findProduct();
