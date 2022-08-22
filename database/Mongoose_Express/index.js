@@ -27,9 +27,11 @@ app.use(express.urlencoded({extended:true}));
 const categories=['fruit','vegetable','dairy'];
 
 app.get('/products', async(req,res)=>{
-    const products= await Product.find({});
-    console.log(products)
-    res.render('products/index',{products})
+    const {category}=req.query;
+    let products;
+    if(category) products=await Product.find({category});
+    else products=await Product.find({products});
+    res.render('products/index',{products});
 })
 
 app.get('/products/new',(req,res)=>{
@@ -60,6 +62,12 @@ app.put('/products/:id', async (req,res)=>{
     const {id}=req.params;
     const product=await Product.findByIdAndUpdate(id, req.body, {runValidators:true, new:true});
     res.redirect(`/products/${product._id}`);
+})
+
+app.delete('/products/:id',async (req,res)=>{
+    const {id}=req.params;
+    const product=await Product.findByIdAndDelete(id);
+    res.redirect('/products');
 })
 
 app.listen(3000,()=>{
