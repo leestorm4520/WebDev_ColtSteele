@@ -11,11 +11,11 @@
     <form action="/products" method="post">
         <input type="text" name="name" placeholder="Product Name"><br>
         <input type="number" id="price" name="price" placeholder="Price"><br>
-        <select>
-            <option value="vegetable">vegetable</option>
-            <option value="seafood">seafood</option>
-            <option value="dairy">dairy</option>
-            <option value="fruit">fruit</option>
+        <select name="category" id="category">
+            <% for(let category of categories){%>
+                <option value="<%=category%>"><%= category%></option>
+                <% }%>
+            
         </select>
         <button>Submit</button>
     </form>
