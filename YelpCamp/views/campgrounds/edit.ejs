@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit</title>
+    <title>Edit <%=campground.title%></title>
 </head>
 <body>
+    <h2>Edit <%=campground.title%></h2>
+    <form action="/campgrounds" method="post">
+        <label >Title</label>
+        <input type="text" id="title" name='campground[title]' value="<%=campground.title%>">
+        <label>Price</label>
+        <input type="text" id="price" name='campground[price]' value="<%=campground.price%>">
+        <label>Description</label>
+        <textarea id="desc" rows="10" cols="30" value="<%=campground.description%>"></textarea>
+        <label>Location</label>
+        <input type="text" id="loc" name='campground[location]' value="<%=campground.location%>">
+        <button>Submit</button>
+    </form>
     
 </body>
 </html>

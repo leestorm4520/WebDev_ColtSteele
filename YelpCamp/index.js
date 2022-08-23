@@ -48,7 +48,7 @@ app.get('/campgrounds/new',(req,res)=>{
 app.post('/campgrounds', async (req,res)=>{
     const newCamp=new Campground(req.body.campground);
     await newCamp.save();
-    res.redirect(`/campgrounds/${newCamp._id}`,{newCamp});
+    res.redirect(`/campgrounds/${newCamp._id}`);
 })
 
 //Show a specific camp
