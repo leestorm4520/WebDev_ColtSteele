@@ -8,17 +8,26 @@
 </head>
 <body>
     <h2>Edit <%=campground.title%></h2>
-    <form action="/campgrounds" method="post">
-        <label >Title</label>
-        <input type="text" id="title" name='campground[title]' value="<%=campground.title%>">
-        <label>Price</label>
-        <input type="text" id="price" name='campground[price]' value="<%=campground.price%>">
-        <label>Description</label>
-        <textarea id="desc" rows="10" cols="30" value="<%=campground.description%>"></textarea>
+    <form action="/campgrounds" method="put">
+        <div>
+            <label >Title</label>
+            <input type="text" id="title" name='campground[title]' value="<%=campground.title%>">
+        </div>
+        <div>
+            <label>Price</label>
+            <input type="text" id="price" name='campground[price]' value="<%=campground.price%>">
+        </div>
+        <div>
+            <label>Description</label>
+            <textarea id="desc" name="campground[description]" rows="10" cols="30" value="<%=campground.description%>"></textarea>
+        </div>
+       <div>
         <label>Location</label>
         <input type="text" id="loc" name='campground[location]' value="<%=campground.location%>">
+       </div>
+        
         <button>Submit</button>
     </form>
-    
+    <a href="/campgrounds/<%=campground._id%>">Back to Campround</a>
 </body>
 </html>
