@@ -35,11 +35,43 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/campgrounds',async (req,res)=>{
-    const campground=await Campground.find({});
-    res.render('campgrounds/index',{campground});
+    const campgrounds=await Campground.find({});
+    res.render('campgrounds/index',{campgrounds});
 })
 
-app.get()
+app.get('/campgrounds/new',(req,res)=>{
+    res.render('campgrounds/new');
+})
+
+app.get('/campgrounds/:id',async (req,res)=>{
+    const {id}=req.params;
+    const campground= await Campground.findById(id);
+    res.render('campgrounds/show',{campground});
+})
+
+app.post('/campgrounds', async (req,res)=>{
+    const newCamp=new Campground(req.body);
+    await newCamp.save();
+    res.redirect(`campgrounds/show`,{newCamp});
+})
+
+app.get('/campgrounds/:id/edit', async (req,res)=>{
+    const {id}=req.params;
+    const campground=await Campground.findById(id);
+    res.render('campgrounds/edit', {campground});
+})
+
+app.put('/campgrounds/:id', async (req,res)=>{
+    const {id}=req.params;
+    const campground=await Campground.findByIdAndUpdate(id,req.body,{runValidators:true, new:true});
+    req.redirct(`campgrounds/${campground._id}`);
+})
+
+app.delete('/campgrounds/:id',async (req,res)=>{
+    const {id}=req.params;
+    const campground=await Campground.findByIdAndDelete(id);
+    res.redirect('/campgrounds');
+})
 
 app.listen(3000,()=>{
     console.log('Server on port 3000');
