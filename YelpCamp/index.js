@@ -46,9 +46,9 @@ app.get('/campgrounds/new',(req,res)=>{
 })
 //Create a new camp on the server
 app.post('/campgrounds', async (req,res)=>{
-    const newCamp=new Campground(req.body.campground);
-    await newCamp.save();
-    res.redirect(`/campgrounds/${newCamp._id}`);
+    const campground=new Campground(req.body.campground);
+    await campground.save();
+    res.redirect(`/campgrounds/${campground._id}`);
 })
 
 //Show a specific camp
@@ -69,8 +69,8 @@ app.get('/campgrounds/:id/edit', async (req,res)=>{
 //Edit a specific camp on the server
 app.put('/campgrounds/:id', async (req,res)=>{
     const {id}=req.params;
-    const campground=await Campground.findByIdAndUpdate(id,req.body,{runValidators:true, new:true});
-    req.redirect(`/campgrounds/${campground._id}`);
+    const campground=await Campground.findByIdAndUpdate(id,req.body.campground,{runValidators:true, new:true});
+    res.redirect(`/campgrounds/${campground._id}`);
 })
 
 //Delete an existing camp

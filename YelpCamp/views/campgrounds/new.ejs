@@ -4,21 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add A New Camp</title>
+    <title>Add a New Camp</title>
 </head>
 <body>
     <h2>Add A New Camp</h2>
     <form action="/campgrounds" method="post">
-        <label >Title</label>
-        <input type="text" id="title" placeholder="Title">
-        <label>Price</label>
-        <input type="text" id="price" placeholder="Price">
-        <label>Description</label>
-        <textarea id="desc" rows="10" cols="30"></textarea>
+        <div>
+            <label >Title</label>
+            <input type="text" id="title" name='campground[title]'>
+        </div>
+        <div>
+            <label>Price</label>
+            <input type="text" id="price" name='campground[price]'>
+        </div>
+        <div>
+            <label>Description</label>
+            <textarea id="desc" name="campground[description]" rows="10" cols="30"></textarea>
+        </div>
+       <div>
         <label>Location</label>
-        <input type="text" id="loc" placeholder="Location">
+        <input type="text" id="loc" name='campground[location]'>
+       </div>
+        
         <button>Submit</button>
     </form>
-    
+    <a href="/campgrounds">All Campgrounds</a>
 </body>
 </html>
