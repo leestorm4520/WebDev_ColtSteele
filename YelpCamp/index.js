@@ -6,6 +6,7 @@ const ejsMate=require('ejs-mate');
 const methodOverride=require('method-override');
 const Campground=require('./models/campground');
 const { resolveSoa } = require('dns');
+const AppError= require('./AppError');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp',{
     useNewUrlParser:true,
@@ -32,56 +33,71 @@ app.set('views',path.join(__dirname,'views'));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 
+function wrapAsync(fn){
+    return function (req,res,next){
+        fn(req,res,next).catch(e=>next(e))
+    }
+}
+
 app.get('/',(req,res)=>{
     res.render('campgrounds/home');
 })
 
 //Show all camps
-app.get('/campgrounds',async (req,res)=>{
+app.get('/campgrounds', wrapAsync(async (req,res,next)=>{
     const campgrounds=await Campground.find({});
     res.render('campgrounds/index',{campgrounds});
-})
+}))
 
 //Show the form to create new camp
 app.get('/campgrounds/new',(req,res)=>{
     res.render('campgrounds/new');
 })
 //Create a new camp on the server
-app.post('/campgrounds', async (req,res)=>{
+app.post('/campgrounds', wrapAsync(async (req,res,next)=>{
     const campground=new Campground(req.body.campground);
     await campground.save();
     res.redirect(`/campgrounds/${campground._id}`);
-})
+}))
 
 //Show a specific camp
-app.get('/campgrounds/:id',async (req,res)=>{
+app.get('/campgrounds/:id', wrapAsync(async (req,res,next)=>{
     const {id}=req.params;
     const campground= await Campground.findById(id);
     res.render('campgrounds/show',{campground});
-})
+}))
 
 
 //Show the form to edit an existing camp
-app.get('/campgrounds/:id/edit', async (req,res)=>{
+app.get('/campgrounds/:id/edit', wrapAsync(async (req,res,next)=>{
     const {id}=req.params;
     const campground=await Campground.findById(id);
     res.render('campgrounds/edit', {campground});
-})
+}))
 
 //Edit a specific camp on the server
-app.put('/campgrounds/:id', async (req,res)=>{
+app.put('/campgrounds/:id', wrapAsync(async (req,res,next)=>{
     const {id}=req.params;
     const campground=await Campground.findByIdAndUpdate(id,req.body.campground,{runValidators:true, new:true});
     res.redirect(`/campgrounds/${campground._id}`);
-})
+}))
 
 //Delete an existing camp
-app.delete('/campgrounds/:id',async (req,res)=>{
+app.delete('/campgrounds/:id',wrapAsync(async (req,res)=>{
     const {id}=req.params;
     const campground=await Campground.findByIdAndDelete(id);
     res.redirect('/campgrounds');
-})
+}))
 
+const handleValidationErr=err=>{
+    console.dir(err);
+    return new AppError(`Validation Failed...${err.message}`,400)
+}
+
+app.use((err,req,res,next)=>{
+    const {status=500,message='Something went wrong'}=err;
+    res.status(status).send(message);
+})
 app.listen(3000,()=>{
     console.log('Server on port 3000');
 })
