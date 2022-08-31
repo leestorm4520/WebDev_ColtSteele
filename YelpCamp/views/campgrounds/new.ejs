@@ -2,7 +2,7 @@
 <div class="row">
     <h1 class="text-center">New Campgrounds</h1>
     <div class="col-6 offset-3">
-        <form action="/campgrounds" method="post" novalidate class="validated-form">
+        <form action="/campgrounds" method="post" class="validated-form" novalidate>
             <div class="mb-3">
                 <label class="form-label">Title</label>
                 <input class="form-control" type="text" id="title" name='campground[title]' required>
@@ -12,7 +12,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Location</label>
-                <input class="form-control" type="text" id="loc" name='campground[location]' required>
+                <input class="form-control" type="text" id="location" name='campground[location]' required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
