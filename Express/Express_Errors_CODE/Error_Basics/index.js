@@ -23,8 +23,7 @@ const verifyPassword = (req, res, next) => {
         next();
     }
     throw new AppError('password required', 401);
-    // res.send("PASSWORD NEEDED!")
-    // throw new AppError('Password required!', 400)
+   
 }
 
 app.get('/', (req, res) => {
@@ -53,14 +52,6 @@ app.use((req, res) => {
     res.status(404).send('NOT FOUND!')
 })
 
-
-// app.use((err, req, res, next) => {
-//     console.log("******************************************")
-//     console.log("*****************ERROR*****************")
-//     console.log("******************************************")
-//     console.log(err)
-//     next(err)
-// })
 
 app.use((err, req, res, next) => {
     const { status = 500, message = 'Something Went Wrong' } = err;
