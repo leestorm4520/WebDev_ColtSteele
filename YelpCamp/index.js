@@ -8,6 +8,9 @@ const Campground=require('./models/campground');
 const { resolveSoa } = require('dns');
 const ExpressError= require('./utils/ExpressError');
 const wrapAsync=require('./utils/wrapAsync');
+const Joi=require('joi');
+const { privateDecrypt } = require('crypto');
+const { off } = require('process');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp',{
     useNewUrlParser:true,
@@ -34,9 +37,20 @@ app.set('views',path.join(__dirname,'views'));
 app.use(express.urlencoded({extended:true}));
 app.use(methodOverride('_method'));
 
+const validateCampground=(req,res,next)=>{
+    const {error}=campgroundSchema.validate(req.body);
+    if(error){
+        const msg=error.details.map(el=>el.message).join(',')
+        throw new ExpressError(msg,400)
+    }
+    else{
+        next();
+    }
+}
+
 
 app.get('/',(req,res)=>{
-    res.render('campgrounds/home');
+    res.render('home');
 })
 
 //Show all camps
@@ -50,8 +64,9 @@ app.get('/campgrounds/new',(req,res)=>{
     res.render('campgrounds/new');
 })
 //Create a new camp on the server
-app.post('/campgrounds', wrapAsync(async (req,res,next)=>{
-    if(!req.body.campground) throw new ExpressError('Invalid Campground Data',400);
+app.post('/campgrounds', validateCampground, wrapAsync(async (req,res,next)=>{
+    // if(!req.body.campground) throw new ExpressError('Invalid Campground Data',400);
+    
     const campground=new Campground(req.body.campground);
     await campground.save();
     res.redirect(`/campgrounds/${campground._id}`);
@@ -73,7 +88,7 @@ app.get('/campgrounds/:id/edit', wrapAsync(async (req,res,next)=>{
 }))
 
 //Edit a specific camp on the server
-app.put('/campgrounds/:id', wrapAsync(async (req,res,next)=>{
+app.put('/campgrounds/:id', validateCampground, wrapAsync(async (req,res,next)=>{
     const {id}=req.params;
     const campground=await Campground.findByIdAndUpdate(id,req.body.campground,{runValidators:true, new:true});
     res.redirect(`/campgrounds/${campground._id}`);
@@ -91,8 +106,9 @@ app.all('*', (req,res,next)=>{
 })
 
 app.use((err,req,res,next)=>{
-    const {status=500,message='Something went wrong'}=err;
-    res.status(status).send(message);
+    const {status=500}=err;
+    if(!err.message) err.message='Something went wrong';
+    res.status(status).render('error',{err});
 })
 app.listen(3000,()=>{
     console.log('Server on port 3000');
