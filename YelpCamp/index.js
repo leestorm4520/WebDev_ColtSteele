@@ -9,8 +9,7 @@ const { resolveSoa } = require('dns');
 const ExpressError= require('./utils/ExpressError');
 const wrapAsync=require('./utils/wrapAsync');
 const Joi=require('joi');
-const { privateDecrypt } = require('crypto');
-const { off } = require('process');
+const {campgroundSchema}=require('./schemas');
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp',{
     useNewUrlParser:true,
