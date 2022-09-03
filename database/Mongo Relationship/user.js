@@ -11,3 +11,19 @@ mongoose.connect('mongodb://localhost:27017/yelp-camp',{
     console.log(err);
 })
 ;
+
+const userSchema=mongoose.Schema({
+    first:String,
+    last:String,
+    address:[
+        {
+            street:String,
+            city:String,
+            state:String,
+            country:{
+                type:String,
+                required:true
+            }
+        }
+    ]
+})
