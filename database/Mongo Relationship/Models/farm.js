@@ -1,4 +1,5 @@
 const mongoose=require('mongoose');
+const {Schema}=mongoose;
 mongoose.connect('mongodb://localhost:27017/relationshipDemo',{
     useNewUrlParser:true,
     useUnifiedTopology:true
@@ -29,3 +30,18 @@ const Product=mongoose.model('Product',productSchema);
 //     { name: 'Asparagus', price: 3.99, season: 'Spring' },
 // ])
 
+// const farmSchema=new mongoose.Schema({
+//     name:String,
+//     city:String,
+//     products:[{type:Schema.Types.ObjectId, ref:'Product'}]
+// })
+// const Farm=mongoose.model('Farm',farmSchema);
+
+// const makeFarm=async()=>{
+//     const farm=new Farm({name:'Alamo Ranch',city:'San Antonio'})
+//     const melon=await Product.findOne({name: 'Goddess Melon'});
+//     farm.products.push(melon);
+//     await farm.save()
+//     console.log(farm);
+// }
+// makeFarm();
