@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 //     console.log(hash);
 // }
 
+
 const hashPassword = async (pw) => {
     //Pass in the plain text password and the number of rounds:
     const hash = await bcrypt.hash(pw, 12);
