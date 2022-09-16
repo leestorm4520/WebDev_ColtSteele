@@ -15,6 +15,7 @@ app.get('/setname', (req, res) => {
     res.send('OK SENT YOU A COOKIE!!!')
 })
 
+//digital signature - not to encrypt - but to verify
 app.get('/getsignedcookie', (req, res) => {
     res.cookie('fruit', 'grape', { signed: true })
     res.send('OK SIGNED YOUR FRUIT COOKIE!')
